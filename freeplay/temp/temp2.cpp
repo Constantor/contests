@@ -31,7 +31,7 @@ mt19937_64 rnd64(RND_CONST);
 #endif
 
 void solve() {
-
+	cout << "heheh" << endl;
 }
 
 int main(int argc, char *argv[]) {
