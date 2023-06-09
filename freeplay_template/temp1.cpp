@@ -36,14 +36,25 @@ void solve() {
 
 int main(int argc, char *argv[]) {
 #if WITH_FILES
-    freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
+	if(2 < argc && string(argv[1]) == "local") {
+		int fileLen = static_cast<int>(strlen(argv[2]));
+		int fileID = 0;
+		for(int i = 5, j = 1; '0' <= argv[2][fileLen - i] && argv[2][fileLen - i] <= '9'; i++, j *= 10)
+			fileID += (argv[2][fileLen - i] - '0') * j;
+		freopen(("input" + to_string(fileID) + ".txt").c_str(), "r", stdin);
+		freopen(("output" + to_string(fileID) + ".txt").c_str(), "w", stdout);
+	} else {
+		freopen("input.txt", "r", stdin);
+		freopen("output.txt", "w", stdout);
+	}
 #endif
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
+	if(!(1 < argc && string(argv[1]) == "local")) {
+		ios::sync_with_stdio(false);
+		cin.tie(nullptr);
+		cout.tie(nullptr);
+	}
 
-    solve();
+	solve();
 
-    return 0;
+	return 0;
 }
