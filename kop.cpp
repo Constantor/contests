@@ -30,6 +30,18 @@ inline void operator delete(void *) noexcept {}
 //inline void operator delete [] ( void * ) { assert(0); }
 #endif
 
+/* Another variant of fast allocation
+const int MAX_MEM = 1e8;
+int mpos = 0;
+char mem[MAX_MEM];
+inline void * operator new (size_t n) {
+	assert((mpos += n) <= MAX_MEM);
+	return (void *)(mem + mpos - n);
+}
+void operator delete (void *) noexcept { } // must have!
+void operator delete (void *, size_t) noexcept { } // must have!
+*/
+
 /** Fast input-output */
 
 template<class T = int>

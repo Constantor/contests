@@ -17,7 +17,7 @@ typedef unsigned long long ull;
 typedef unsigned char uchar;
 typedef long double ld;
 
-#define WITH_FILES true
+#define WITH_FILES false
 #define TIME_RAND false
 
 #if TIME_RAND
